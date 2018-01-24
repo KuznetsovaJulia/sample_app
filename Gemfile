@@ -10,10 +10,6 @@ gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'pg', '~> 0.18'
 
-group :development, :test do
-  gem 'byebug',  '9.0.6', platform: :mri
-end
-
 group :development do
   gem 'web-console',           '3.5.1'
   gem 'listen',                '3.1.5'
@@ -22,10 +18,17 @@ group :development do
 end
 
 group :test do
-  gem 'rails-controller-testing', '1.0.2'
+  gem 'byebug',  '9.0.6', platform: :mri
+  gem 'rspec-rails', '~> 3.7'
   gem 'minitest-reporters',       '1.1.14'
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
+  gem 'capybara-email'
+  gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'launchy'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
 end
 
 
