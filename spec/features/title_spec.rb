@@ -5,7 +5,7 @@ feature 'when i visit page i want to see title' do
   end
   scenario "Home title" do
   visit '/home'
-  expect(page).to have_title ("Home | #{@base_title}")
+  expect(page).to have_title ( "#{@base_title}")
   end
   scenario "Contact title" do
     visit '/contact'

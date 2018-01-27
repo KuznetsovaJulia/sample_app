@@ -28,4 +28,5 @@ RSpec.describe StaticPagesController do
       expect(response.status).to eq 200
     end
   end
+
 end
