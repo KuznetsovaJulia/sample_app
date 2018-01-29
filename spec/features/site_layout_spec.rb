@@ -9,6 +9,7 @@ About, and Contact pages.
 
 
   scenario 'should have the right links on the layout' do
+      @base_title = "Ruby on Rails Tutorial Sample App"
     visit root_path
     click_link "About"
     expect(page).to have_title("About | #{@base_title}")
