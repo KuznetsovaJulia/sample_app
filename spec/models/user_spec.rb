@@ -1,12 +1,20 @@
 require "rails_helper"
 RSpec.describe UsersController do
-    let(:first_user) { User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
+    let(:first_user) { User.new(name: "Example",surname: "User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
     describe '#user' do
         it 'should be valid' do
             expect(first_user).to respond_to(:name, :email)
         end
         it 'name should be present' do
             first_user.name = "     "
+            expect(first_user.valid?).to_not eq true
+        end
+        it 'surname should be present' do
+            first_user.surname = "     "
+            expect(first_user.valid?).to_not eq true
+        end
+        it 'surname should not be too long' do
+            first_user.surname =  "a" * 51
             expect(first_user.valid?).to_not eq true
         end
         it 'email should be present' do

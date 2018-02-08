@@ -12,11 +12,14 @@ gem 'jbuilder',     '2.7.0'
 gem 'pg', '~> 0.18'
 gem 'bcrypt',         '3.1.11'
 
+
 group :development do
   gem 'web-console',           '3.5.1'
   gem 'listen',                '3.1.5'
   gem 'spring',                '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
