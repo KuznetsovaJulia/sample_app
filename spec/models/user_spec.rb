@@ -45,16 +45,22 @@ RSpec.describe UsersController do
             expect(first_user.valid?).to_not eq true
             end
         end
-        it 'email addresses should be unique' do
-            @duplicate_user = first_user
-            first_user.save
-            expect(@duplicate_user.save).to_not eq true
-        end
+
+
         it 'email addresses should be saved as lower-case' do
             @mixed_case_email = "FoO@ExAMPle.CoM"
             first_user.email = @mixed_case_email
             first_user.save
             expect(@mixed_case_email.downcase).to eq first_user.reload.email
         end
+
     end
+    describe '#validate users' do
+        it 'bad name' do
+            @bad_name = "этодура"
+            first_user.name = @bad_name
+            expect(first_user.save).to_not eq true
+        end
+    end
+    it { should validate_uniqueness_of(:email) }
 end
