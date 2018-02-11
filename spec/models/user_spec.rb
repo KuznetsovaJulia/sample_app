@@ -3,7 +3,7 @@ describe User, :type => :model do
     let(:first_user) {User.new(name: "Example",surname: "User",
                                email: "user@example.com", password: "foobar",
                                password_confirmation: "foobar") }
-    it { should validate_uniqueness_of(:email).case_insensitive  }
+    it { should validate_uniqueness_of(:email)  }
 
     it 'should be valid' do
         expect(first_user).to respond_to(:name, :email)
@@ -48,6 +48,7 @@ describe User, :type => :model do
             expect(first_user.valid?).to_not eq true
         end
     end
+
     it 'email addresses should be saved as lower-case' do
         @mixed_case_email = "FoO@ExAMPle.CoM"
         first_user.email = @mixed_case_email
