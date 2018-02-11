@@ -1,6 +1,8 @@
+
 class User < ApplicationRecord
     before_save { self.email = email.downcase }
     VALID_NAME_SURNAME_REGEX =/\A\S+\b\z/i
+    mount_uploader :avatar, AvatarUploader
     validates :name, presence: true, length: { maximum: 50 },
               format: { with:  VALID_NAME_SURNAME_REGEX }
     validates :surname, presence: true, length: { maximum: 50 },
@@ -18,6 +20,14 @@ class User < ApplicationRecord
     end
     FORBIDDEN_USERNAMES = %w{дура дебил}
     validate :name_is_allowed
+    validate  :picture_size
+
+    def picture_size
+        if picture.size > 1.megabytes
+            errors.add(:picture, "should be less than 1MB")
+        end
+    end
+
     private
     def name_is_allowed
         if FORBIDDEN_USERNAMES.any?{|badname| name.include?(badname)}

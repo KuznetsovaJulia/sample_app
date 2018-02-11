@@ -11,7 +11,9 @@ gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'pg', '~> 0.18'
 gem 'bcrypt',         '3.1.11'
-
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+gem 'fog', '1.42'
 
 group :development do
   gem 'web-console',           '3.5.1'
