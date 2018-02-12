@@ -5,7 +5,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
   version :thumb do
-    process resize_to_limit: [10, 10]
+    process resize_to_limit: [60, 60]
   end
   storage :file
 
