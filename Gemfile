@@ -14,7 +14,7 @@ gem 'bcrypt',         '3.1.11'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'faker',          '1.7.3'
-
+gem 'active_model_serializers'
 group :development do
   gem 'web-console',           '3.5.1'
   gem 'listen',                '3.1.5'
