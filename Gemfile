@@ -15,6 +15,8 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'faker',          '1.7.3'
 gem 'active_model_serializers'
+gem 'will_paginate',           '3.1.6'
+gem 'bootstrap-will_paginate', '1.0.0'
 group :development do
   gem 'web-console',           '3.5.1'
   gem 'listen',                '3.1.5'

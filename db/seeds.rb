@@ -8,7 +8,8 @@ User.create!(name:  "Example",
              email: "example@railstutorial.org",
              avatar: File.open('public/uploads/user/default.png'),
              password:              "foobar",
-             password_confirmation: "foobar")
+             password_confirmation: "foobar",
+             admin: true)
 
 99.times do |n|
     name  = Faker::Name.first_name
