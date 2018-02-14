@@ -3,7 +3,6 @@ class User < ApplicationRecord
     attr_accessor :remember_token
     before_save { self.email = email.downcase }
     VALID_NAME_SURNAME_REGEX =/\A\S+\b\z/i
-    mount_uploader :avatar, AvatarUploader
     validates :name, presence: true, length: { maximum: 50 },
               format: { with:  VALID_NAME_SURNAME_REGEX }
     validates :surname, presence: true, length: { maximum: 50 },
@@ -12,7 +11,7 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 },
               format: { with: VALID_EMAIL_REGEX },
               uniqueness: { case_sensitive: false }
-    validates :password, presence: true, length: { minimum: 6 }
+    validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
     has_secure_password
     FORBIDDEN_USERNAMES = %w{дура дебил}
     validate :name_is_allowed
@@ -22,6 +21,7 @@ class User < ApplicationRecord
             errors.add(:avatar, "should be less than 1MB")
         end
     end
+    mount_uploader :avatar, AvatarUploader
     class << self
         # Returns the hash digest of the given string.
         def digest(string)
@@ -29,7 +29,6 @@ class User < ApplicationRecord
                     BCrypt::Engine.cost
             BCrypt::Password.create(string, cost: cost)
         end
-
         # Returns a random token.
         def new_token
             SecureRandom.urlsafe_base64
@@ -55,4 +54,5 @@ class User < ApplicationRecord
             errors.add(:name,"has been restricted from use.")
         end
     end
+
 end
