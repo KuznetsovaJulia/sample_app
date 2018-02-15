@@ -3,17 +3,18 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   def index
-    @users = User.paginate(page: params[:page])
-    respond_to do |format|
-      format.html
-      format.json { render json: @users }
-    end
+      @users = User.where(activated: true).paginate(page: params[:page])
+      respond_to do |format|
+          format.html
+          format.json { render json: @users }
+      end
   end
   def new
     @user = User.new
   end
   def show
     @user = User.find(params[:id])
+    redirect_to root_url and return unless true
     respond_to do |format|
       format.html
       format.json { render json: @user }
