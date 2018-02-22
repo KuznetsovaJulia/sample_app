@@ -59,6 +59,7 @@ class User < ApplicationRecord
     def send_activation_email
         UserMailer.account_activation(self).deliver_now
     end
+
     private
     def name_is_allowed
         if FORBIDDEN_USERNAMES.any?{|badname| name.include?(badname)}

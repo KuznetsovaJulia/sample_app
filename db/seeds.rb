@@ -11,7 +11,8 @@ User.create!(name:  "Example",
              password_confirmation: "foobar",
              admin: true,
              activated: true,
-             activated_at: Time.zone.now)
+             activated_at: Time.zone.now,
+             sign_in_count:0)
 
 99.times do |n|
     name  = Faker::Name.first_name
@@ -24,5 +25,6 @@ User.create!(name:  "Example",
                  password:              password,
                  password_confirmation: password,
                  activated: true,
-                 activated_at: Time.zone.now)
+                 activated_at: Time.zone.now,
+                 sign_in_count:0)
 end
