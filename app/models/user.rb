@@ -59,6 +59,9 @@ class User < ApplicationRecord
     def send_activation_email
         UserMailer.account_activation(self).deliver_now
     end
+    def send_logged_in_email
+        UserMailer.account_logged_in(self).deliver_now if sign_in_count_changed?
+    end
 
     private
     def name_is_allowed

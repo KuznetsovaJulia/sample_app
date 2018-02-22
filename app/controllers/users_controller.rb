@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
   def index
       @users = User.where(activated: true).paginate(page: params[:page])
-
       respond_to do |format|
           format.html
           format.json { render json: @users }
@@ -25,7 +24,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      UserMailer.account_activation(@user).deliver_now
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
     else
